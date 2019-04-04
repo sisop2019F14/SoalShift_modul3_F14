@@ -9,30 +9,38 @@
 #include <sys/types.h>
 #include <string.h>
 
+int wait=0;
 
 void *process1( void *arg){
 
     //char *path;
     //path = (char *)arg;
     
-    printf("process1\n");
+    //printf("process1\n");
 
     char file[100] = "/home/anwar/documents/FolderProses1/SimpanProses1.txt";
     char cmdSave[] = "ps -aux | head -11 > /home/anwar/documents/FolderProses1/SimpanProses1.txt";
 
+    wait++;
+    while(wait!=2);
     system(cmdSave);    
 
-    char cmdZip[] = "chdir /home/anwar/documents/FolderProses1/ && zip KompresProses1.zip SimpanProses1.txt";
+    char cmdZip[] = "chdir /home/anwar/documents/FolderProses1/ && zip KompresProses1.zip SimpanProses1.txt; rm SimpanProses1.txt";
+    wait++;
+    while(wait!=4);
     system(cmdZip);
 
-    remove(file);
+    //remove(file);
 
     printf("Menunggu 15 detik untuk mengekstrak kembali\n");
     sleep(15);
 
     char cmdExtract[] = "chdir /home/anwar/documents/FolderProses1/ && unzip KompresProses1.zip";
+    wait++;
+    while(wait!=6);
     system(cmdExtract);
 
+    //printf("Kelar\n");
     pthread_exit(0);
 }
 
@@ -41,24 +49,31 @@ void *process2( void *arg){
     //char *path;
     //path = (char *)arg;
     
-    printf("process2\n");
+    //printf("process2\n");
     
     char file[100] = "/home/anwar/documents/FolderProses2/SimpanProses2.txt";
     char cmdSave[] = "ps -aux | head -11 > /home/anwar/documents/FolderProses2/SimpanProses2.txt";
 
+    wait++;
+    while(wait!=2);
     system(cmdSave);    
 
-    char cmdZip[] = "chdir /home/anwar/documents/FolderProses2/ && zip KompresProses2.zip SimpanProses2.txt";
+    char cmdZip[] = "chdir /home/anwar/documents/FolderProses2/ && zip KompresProses2.zip SimpanProses2.txt; rm SimpanProses2.txt";
+    wait++;
+    while(wait!=4);
     system(cmdZip);
 
-    remove(file);
+    //remove(file);
 
     printf("Menunggu 15 detik untuk mengekstrak kembali\n");
     sleep(15);
 
     char cmdExtract[] = "chdir /home/anwar/documents/FolderProses2/ && unzip KompresProses2.zip";
+    wait++;
+    while(wait!=6);
     system(cmdExtract);
 
+    //printf("Kelar\n");
     pthread_exit(0);
 
 }
