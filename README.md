@@ -33,7 +33,7 @@ Client yang terkoneksi ke server pembeli hanya bisa mengurangi stok
 
 -Server penjual akan mencetak stok saat ini setiap 5 detik sekali
 
-# Menggunakan thread, socket, shared memory
+-Menggunakan thread, socket, shared memory
 
 [soal2](https://github.com/sisop2019F14/SoalShift_modul3_F14/tree/master/no2)
 
