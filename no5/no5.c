@@ -25,6 +25,7 @@ char monsterName[100];
 int playerFoodStock=10;
 int enemyHealth = 100;
 int *shopFoodStock;
+int maxHunger = 200;
 
 void changemode(int);
 int  kbhit(void);
@@ -141,6 +142,9 @@ void input(){
                 if(input == '1'){
                     playerFoodStock--;
                     monsHunger+=15;
+                    if(monsHunger>=maxHunger){
+                        monsHunger = 200;
+                    }
                 }else if(input == '2'){
                     if(isBath){
                         monsHygiene+=30;
